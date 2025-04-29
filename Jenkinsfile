@@ -17,8 +17,9 @@ pipeline {
         }
         stage('Git checkout') {
             steps {
-                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/DevOps']], extensions: [], userRemoteConfigs: [[credentialsId: 'My-Github-Login-Creds', url: 'https://github.com/Ralphlarry/jfrog-maven-hello-world.git']])
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/$Branch_name']], extensions: [], userRemoteConfigs: [[credentialsId: 'My-Github-Login-Creds', url: 'https://github.com/Ralphlarry/jfrog-maven-hello-world.git']])
                 sh 'ls -lrt'
+                sh 'echo $Branch_name $CHOICES'
                     }
                 }
     }
